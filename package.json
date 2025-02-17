@@ -1,0 +1,45 @@
+{
+  "name": "use-react-query-subscribe",
+  "version": "1.1.0",
+  "description": "Custom firebase persistence for browser extensions",
+  "homepage": "https://github.com/ivliag/use-react-query-subscribe#readme",
+  "bugs": {
+    "url": "https://github.com/ivliag/use-react-query-subscribe/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivliag/use-react-query-subscribe.git"
+  },
+  "license": "ISC",
+  "author": "Ivan Liagushkin",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc --noEmit && vitest run",
+    "format": "prettier --write .",
+    "pub:patch": "npm test && npm run build && npm version patch && npm publish",
+    "pub:minor": "npm test && npm run build && npm version minor && npm publish",
+    "pub:major": "npm test && npm run build && npm version major && npm publish"
+  },
+  "main": "./dist/useReactQuerySubscribe.js",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@tanstack/react-query": "^5.90.2",
+    "@types/react": "^19.1.16",
+    "prettier": "^3.6.2",
+    "react": "^19.1.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^4",
+    "react": "^16.8"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
