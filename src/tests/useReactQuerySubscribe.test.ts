@@ -34,7 +34,10 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey = ["test-key"];
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -48,7 +51,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: true,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -62,7 +65,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: false,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).not.toHaveBeenCalled();
@@ -73,12 +76,18 @@ describe("useReactQuerySubscribe", () => {
 
       // First hook
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       // Second hook with same key
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -94,14 +103,14 @@ describe("useReactQuerySubscribe", () => {
         useReactQuerySubscribe({
           subscriptionKey: subscriptionKey1,
           subscribeFn: mockSubscribeFn,
-        })
+        }),
       );
 
       renderHook(() =>
         useReactQuerySubscribe({
           subscriptionKey: subscriptionKey2,
           subscribeFn: mockSubscribeFn2,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -119,7 +128,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).not.toHaveBeenCalled();
@@ -140,7 +149,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -162,7 +171,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: true,
-        })
+        }),
       );
 
       // Second hook (will change from enabled to disabled)
@@ -171,7 +180,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -190,7 +199,10 @@ describe("useReactQuerySubscribe", () => {
       let subscriptionKey = ["key1"];
 
       const { rerender } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -208,7 +220,10 @@ describe("useReactQuerySubscribe", () => {
       let subscriptionKey = ["key1"];
 
       const { rerender } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -230,7 +245,7 @@ describe("useReactQuerySubscribe", () => {
       const mockSubscribeFn2 = vi.fn(() => mockUnsubscribe2);
 
       const { rerender } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn })
+        useReactQuerySubscribe({ subscriptionKey, subscribeFn }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -250,7 +265,10 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey = ["test-key"];
 
       const { unmount } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -269,7 +287,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: true,
-        })
+        }),
       );
 
       // Second hook
@@ -278,7 +296,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: true,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -295,15 +313,24 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey = ["test-key"];
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -313,15 +340,24 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey = ["test-key"];
 
       const { unmount: unmount1 } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       const { unmount: unmount2 } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       const { unmount: unmount3 } = renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       // Unmount first two - should not clean up
@@ -346,14 +382,14 @@ describe("useReactQuerySubscribe", () => {
         useReactQuerySubscribe({
           subscriptionKey: subscriptionKey1,
           subscribeFn: mockSubscribeFn,
-        })
+        }),
       );
 
       renderHook(() =>
         useReactQuerySubscribe({
           subscriptionKey: subscriptionKey2,
           subscribeFn: mockSubscribeFn2,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -371,7 +407,10 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey: unknown[] = [];
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -381,7 +420,10 @@ describe("useReactQuerySubscribe", () => {
       const subscriptionKey = [null, undefined];
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -395,7 +437,10 @@ describe("useReactQuerySubscribe", () => {
       ];
 
       renderHook(() =>
-        useReactQuerySubscribe({ subscriptionKey, subscribeFn: mockSubscribeFn })
+        useReactQuerySubscribe({
+          subscriptionKey,
+          subscribeFn: mockSubscribeFn,
+        }),
       );
 
       expect(mockSubscribeFn).toHaveBeenCalledTimes(1);
@@ -409,7 +454,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled: false,
-        })
+        }),
       );
 
       expect(mockSubscribeFn).not.toHaveBeenCalled();
@@ -426,7 +471,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled,
-        })
+        }),
       );
 
       // Should have 1 observer
@@ -452,7 +497,7 @@ describe("useReactQuerySubscribe", () => {
           subscriptionKey,
           subscribeFn: mockSubscribeFn,
           enabled,
-        })
+        }),
       );
 
       // Rapid toggles

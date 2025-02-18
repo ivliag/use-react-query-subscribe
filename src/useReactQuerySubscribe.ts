@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { hashKey, type QueryKey } from '@tanstack/react-query';
+import { useEffect, useRef } from "react";
+import { hashKey, type QueryKey } from "@tanstack/react-query";
 
 const unsubscribes: Record<string, () => void> = {};
 const observerCount: Record<string, number> = {};
@@ -9,7 +9,7 @@ export type SubscriptionCallback<TData> = (data: TData | null) => void;
 
 // Clear all subscriptions - useful for cleanup on signout
 export function clearAllSubscriptions() {
-  Object.keys(unsubscribes).forEach(key => {
+  Object.keys(unsubscribes).forEach((key) => {
     const unsubscribe = unsubscribes[key];
     if (unsubscribe) {
       unsubscribe();
@@ -18,7 +18,7 @@ export function clearAllSubscriptions() {
   });
 
   // Reset observer counts
-  Object.keys(observerCount).forEach(key => {
+  Object.keys(observerCount).forEach((key) => {
     delete observerCount[key];
   });
 }
@@ -77,7 +77,10 @@ export function useReactQuerySubscribe({
     } else {
       // If disabled, clean up any existing subscription
       unsubscribe.current = undefined;
-      if (unsubscribes[subscriptionHash] && observerCount[subscriptionHash] === 0) {
+      if (
+        unsubscribes[subscriptionHash] &&
+        observerCount[subscriptionHash] === 0
+      ) {
         unsubscribes[subscriptionHash]();
         delete unsubscribes[subscriptionHash];
       }
@@ -87,7 +90,9 @@ export function useReactQuerySubscribe({
     return () => {
       if (previousUnsubscribe && previousUnsubscribe !== unsubscribe.current) {
         // Subscription key changed, need to clean up the old one
-        const oldHash = Object.keys(unsubscribes).find(key => unsubscribes[key] === previousUnsubscribe);
+        const oldHash = Object.keys(unsubscribes).find(
+          (key) => unsubscribes[key] === previousUnsubscribe,
+        );
         if (oldHash && observerCount[oldHash] === 0) {
           previousUnsubscribe();
           delete unsubscribes[oldHash];
